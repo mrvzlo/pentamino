@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PentaminoManager {
 
-    public List<int[][]> Variations;
+    public List<boolean[][]> Variations;
 
     public PentaminoManager() {
         Variations = new ArrayList<>();
@@ -46,101 +46,101 @@ public class PentaminoManager {
         rotateLast3Times();
     }
 
-    private int[][] GetI() {
-        int[][] shape = { { 1, 1, 1, 1, 1 } };
+    private boolean[][] GetI() {
+        boolean[][] shape = { { true, true, true, true, true } };
         return shape;
     }
 
-    private int[][] GetL() {
-        int[][] shape = {
-                { 1, 1, 1, 1 },
-                { 1, 0, 0, 0 }
+    private boolean[][] GetL() {
+        boolean[][] shape = {
+                { true, true, true, true },
+                { true, false, false, false }
         };
         return shape;
     }
 
-    private int[][] GetY() {
-        int[][] shape = {
-                { 1, 1, 1, 1 },
-                { 0, 1, 0, 0 }
+    private boolean[][] GetY() {
+        boolean[][] shape = {
+                { true, true, true, true },
+                { false, true, false, false }
         };
         return shape;
     }
 
-    private int[][] GetN() {
-        int[][] shape = {
-                { 0, 1, 1, 1 },
-                { 1, 1, 0, 0 }
+    private boolean[][] GetN() {
+        boolean[][] shape = {
+                { false, true, true, true },
+                { true, true, false, false }
         };
         return shape;
     }
 
-    private int[][] GetF() {
-        int[][] shape = {
-                { 0, 1, 0 },
-                { 1, 1, 1 },
-                { 0, 0, 1 },
+    private boolean[][] GetF() {
+        boolean[][] shape = {
+                { false, true, false },
+                { true, true, true },
+                { false, false, true },
         };
         return shape;
     }
 
-    private int[][] GetP() {
-        int[][] shape = {
-                { 0, 1, 1 },
-                { 1, 1, 1 },
+    private boolean[][] GetP() {
+        boolean[][] shape = {
+                { false, true, true },
+                { true, true, true },
         };
         return shape;
     }
 
-    private int[][] GetU() {
-        int[][] shape = {
-                { 1, 0, 1 },
-                { 1, 1, 1 },
+    private boolean[][] GetU() {
+        boolean[][] shape = {
+                { true, false, true },
+                { true, true, true },
         };
         return shape;
     }
 
-    private int[][] GetT() {
-        int[][] shape = {
-                { 0, 0, 1 },
-                { 1, 1, 1 },
-                { 0, 0, 1 },
+    private boolean[][] GetT() {
+        boolean[][] shape = {
+                { false, false, true },
+                { true, true, true },
+                { false, false, true },
         };
         return shape;
     }
 
-    private int[][] GetZ() {
-        int[][] shape = {
-                { 0, 0, 1 },
-                { 1, 1, 1 },
-                { 1, 0, 0 },
+    private boolean[][] GetZ() {
+        boolean[][] shape = {
+                { false, false, true },
+                { true, true, true },
+                { true, false, false },
         };
         return shape;
     }
 
-    private int[][] GetV() {
-        int[][] shape = {
-                { 0, 0, 1 },
-                { 0, 0, 1 },
-                { 1, 1, 1 },
+    private boolean[][] GetV() {
+        boolean[][] shape = {
+                { false, false, true },
+                { false, false, true },
+                { true, true, true },
         };
         return shape;
     }
 
-    private int[][] GetW() {
-        int[][] shape = {
-                { 0, 0, 1 },
-                { 0, 1, 1 },
-                { 1, 1, 0 },
+    private boolean[][] GetW() {
+        boolean[][] shape = {
+                { false, false, true },
+                { false, true, true },
+                { true, true, false },
         };
         return shape;
     }
 
-    private int[][] GetX() {
-        int[][] shape = {
-                { 0, 1, 0 },
-                { 1, 1, 1 },
-                { 0, 1, 0 },
+    private boolean[][] GetX() {
+        boolean[][] shape = {
+                { false, true, false },
+                { true, true, true },
+                { false, true, false },
         };
         return shape;
     }
@@ -151,20 +151,20 @@ public class PentaminoManager {
         Variations.add(rotateArray(Variations.get(Variations.size() - 1)));
     }
 
-    private static int[][] rotateArray(int[][] source) {
+    private static boolean[][] rotateArray(boolean[][] source) {
         int rows = source.length;
         int cols = source[0].length;
-        int[][] result = new int[cols][rows];
+        boolean[][] result = new boolean[cols][rows];
         for (int i = 0; i < rows; i++)
             for (int j = 0; j < cols; j++)
                 result[j][rows - i - 1] = source[i][j];
         return result;
     }
 
-    private static int[][] flipArray(int[][] source) {
+    private static boolean[][] flipArray(boolean[][] source) {
         int rows = source.length;
         int cols = source[0].length;
-        int[][] result = new int[rows][cols];
+        boolean[][] result = new boolean[rows][cols];
         for (int i = 0; i < rows; i++)
             for (int j = 0; j < cols; j++)
                 result[i][cols - j - 1] = source[i][j];

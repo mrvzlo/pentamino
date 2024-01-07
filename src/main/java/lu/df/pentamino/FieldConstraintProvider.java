@@ -10,6 +10,7 @@ public class FieldConstraintProvider implements ConstraintProvider {
     public Constraint[] defineConstraints(ConstraintFactory constraintFactory) {
         return new Constraint[] {
                 BoundsConflict(constraintFactory),
+                BlackDotsConflict(constraintFactory),
                 OverlapConflict(constraintFactory),
         };
     }
@@ -22,11 +23,19 @@ public class FieldConstraintProvider implements ConstraintProvider {
                 .asConstraint("Overlap conflict");
     }
 
-    Constraint BoundsConflict(ConstraintFactory constraintFactory) {
+    Constraint BlackDotsConflict(ConstraintFactory constraintFactory) {
         return constraintFactory
                 .forEach(Pentamino.class)
                 .filter((a) -> a.GetWrongBounds() > 0)
-                .penalize(HardSoftScore.ONE_HARD, Pentamino::GetWrongBounds)
+                .penalize(HardSoftScore.ONE_SOFT, Pentamino::GetWrongBounds)
+                .asConstraint("Black dot conflict");
+    }
+
+    Constraint BoundsConflict(ConstraintFactory constraintFactory) {
+        return constraintFactory
+                .forEach(Pentamino.class)
+                .filter((a) -> a.GetOutOfBounds() > 0)
+                .penalize(HardSoftScore.ONE_HARD, Pentamino::GetOutOfBounds)
                 .asConstraint("Bounds conflict");
     }
 }

@@ -24,27 +24,47 @@ public class Pentamino {
         Id = id;
     }
 
+    public int GetOutOfBounds() {
+        int rows = Variation.Form.length;
+        int cols = Variation.Form[0].length;
+        int bottom = Cell.Y + rows;
+        int right = Cell.X + cols;
+
+        int[][] board = Parent.InitialBoard;
+        int count = 0;
+
+        for (int i = Cell.Y; i < bottom; i++)
+            for (int j = Cell.X; j < right; j++)
+                if (i >= board.length || j >= board[0].length)
+                    count++;
+
+        return count;
+    }
+
     public int GetWrongBounds() {
         int rows = Variation.Form.length;
         int cols = Variation.Form[0].length;
         int bottom = Cell.Y + rows;
         int right = Cell.X + cols;
 
-        int[][] form = Variation.Form;
+        boolean[][] form = Variation.Form;
         int[][] board = Parent.InitialBoard;
         int count = 0;
 
         for (int i = Cell.Y; i < bottom; i++)
-            for (int j = Cell.X; j < right; j++)
-                if (i >= board.length || j >= board[0].length || board[i][j] != 0 && form[i - Cell.Y][j - Cell.X] != 0)
+            for (int j = Cell.X; j < right; j++) {
+                if (i >= board.length || j >= board[0].length)
+                    continue;
+                if (board[i][j] != 0 && form[i - Cell.Y][j - Cell.X])
                     count++;
+            }
 
         return count;
     }
 
     public int GetOverlaps(Pentamino other) {
-        int[][] formA = Variation.Form;
-        int[][] formB = other.Variation.Form;
+        boolean[][] formA = Variation.Form;
+        boolean[][] formB = other.Variation.Form;
 
         int rowsA = formA.length;
         int colsA = formA[0].length;
@@ -57,7 +77,7 @@ public class Pentamino {
                 for (int ib = 0; ib < rowsB; ib++)
                     for (int jb = 0; jb < colsB; jb++)
                         if (Cell.X + ja == other.Cell.X + jb && Cell.Y + ia == other.Cell.Y + ib
-                                && formA[ia][ja] == 1 && formB[ib][jb] == 1)
+                                && formA[ia][ja] && formB[ib][jb])
                             count++;
 
         return count;

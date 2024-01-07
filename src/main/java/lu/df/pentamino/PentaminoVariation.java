@@ -1,9 +1,9 @@
 package lu.df.pentamino;
 
 public class PentaminoVariation {
-    public int[][] Form;
+    public boolean[][] Form;
 
-    public PentaminoVariation(int[][] form) {
+    public PentaminoVariation(boolean[][] form) {
         Form = form;
     }
 }

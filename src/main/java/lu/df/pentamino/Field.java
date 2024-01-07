@@ -64,15 +64,16 @@ public class Field {
         int height = InitialBoard.length;
 
         for (int i = 0; i < Pentaminoes.length; i++) {
-            int[][] form = Pentaminoes[i].Variation.Form;
+            boolean[][] form = Pentaminoes[i].Variation.Form;
             int cx = Pentaminoes[i].Cell.X;
             int cy = Pentaminoes[i].Cell.Y;
             int h = form.length;
             int w = form[0].length;
             for (int y = 0; y < h; y++)
                 for (int x = 0; x < w; x++)
-                    if (y + cy < height && x + cx < width && InitialBoard[y + cy][x + cx] == 0)
-                        InitialBoard[y + cy][x + cx] = form[y][x] * (i + 1);
+                    if (y + cy < height && x + cx < width && form[y][x])
+                        InitialBoard[y + cy][x + cx] = InitialBoard[y + cy][x + cx] > 0 ? -2
+                                : InitialBoard[y + cy][x + cx] < 0 ? -3 : (i + 1);
         }
 
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -92,6 +93,8 @@ public class Field {
             return 0;
         if (value == -2)
             return 0xff0000;
+        if (value == -3)
+            return 0xffff00;
         return Pentaminoes[value - 1].Color;
     }
 

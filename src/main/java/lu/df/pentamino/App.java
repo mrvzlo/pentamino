@@ -18,14 +18,16 @@ public class App {
     private static final Logger LOGGER = LoggerFactory.getLogger(Field.class);
 
     public static void main(String[] args) throws Exception {
+        Field field = new Field(ReadConfig("config.json"));
+        int secs = field.Pentaminoes.length * 2 + 10;
+
         SolverFactory<Field> solverFactory = SolverFactory.create(new SolverConfig()
                 .withSolutionClass(Field.class)
                 .withEntityClasses(Pentamino.class)
                 .withConstraintProviderClass(FieldConstraintProvider.class)
-                .withTerminationSpentLimit(Duration.ofSeconds(45)));
+                .withTerminationSpentLimit(Duration.ofSeconds(secs)));
         Solver<Field> solver = solverFactory.buildSolver();
 
-        Field field = new Field(ReadConfig("config.json"));
         Field solution = solver.solve(field);
         ImageIO.write(solution.ToImage(), "png", new File("output.png"));
     }
