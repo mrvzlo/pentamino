@@ -48,7 +48,7 @@ public class FieldFileManager implements SolutionFileIO<Field> {
         fileName = fileName.substring(0, dotIndex) + ".png";
 
         try {
-            ImageIO.write(field.ToImage(), "png", new File(fileName));
+            ImageIO.write(field.ToImage(), "png", new File(file.getParent(), fileName));
         } catch (IOException e) {
         }
     }

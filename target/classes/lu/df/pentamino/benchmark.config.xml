@@ -32,14 +32,14 @@
     </inheritedSolverBenchmark>
     <solverBenchmark>
         <name>Tabu Search</name>
-        <solver></solver>
     </solverBenchmark>
     <solverBenchmark>
         <name>Simulated Annealing</name>
-        <solver></solver>
     </solverBenchmark>
     <solverBenchmark>
-        <name>Late Acceptance</name>
-        <solver></solver>
+        <name>First Fit</name>
+    </solverBenchmark>
+    <solverBenchmark>
+        <name>First Fit Decreasing</name>
     </solverBenchmark>
 </plannerBenchmark>
