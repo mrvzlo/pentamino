@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plannerBenchmark xmlns="https://timefold.ai/xsd/benchmark"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://timefold.ai/xsd/benchmark https://timefold.ai/xsd/benchmark/benchmark.xsd">
+    <benchmarkDirectory>benchmark</benchmarkDirectory>
+    <parallelBenchmarkCount>AUTO</parallelBenchmarkCount>
+    <inheritedSolverBenchmark>
+        <solver>
+            <solutionClass>lu.df.pentamino.Field</solutionClass>
+            <entityClass>lu.df.pentamino.Pentamino</entityClass>
+            <scoreDirectorFactory>
+                <constraintProviderClass>lu.df.pentamino.FieldConstraintProvider</constraintProviderClass>
+                <initializingScoreTrend>ONLY_DOWN/ONLY_DOWN</initializingScoreTrend>
+            </scoreDirectorFactory>
+            <termination>
+                <minutesSpentLimit>1</minutesSpentLimit>
+            </termination>
+        </solver>
+        <problemBenchmarks>
+            <solutionFileIOClass>lu.df.pentamino.FieldFileManager</solutionFileIOClass>
+            <writeOutputSolutionEnabled>true</writeOutputSolutionEnabled>
+
+            <inputSolutionFile>assets/cross.json</inputSolutionFile>
+            <inputSolutionFile>assets/5x5.json</inputSolutionFile>
+            <inputSolutionFile>assets/5x20.json</inputSolutionFile>
+            <inputSolutionFile>assets/7x7.json</inputSolutionFile>
+            <inputSolutionFile>assets/25x25.json</inputSolutionFile>
+            <inputSolutionFile>assets/big-cross.json</inputSolutionFile>
+            <inputSolutionFile>assets/crossword.json</inputSolutionFile>
+            <inputSolutionFile>assets/dorime.json</inputSolutionFile>
+        </problemBenchmarks>
+    </inheritedSolverBenchmark>
+    <solverBenchmark>
+        <name>Tabu Search</name>
+        <solver></solver>
+    </solverBenchmark>
+    <solverBenchmark>
+        <name>Simulated Annealing</name>
+        <solver></solver>
+    </solverBenchmark>
+    <solverBenchmark>
+        <name>Late Acceptance</name>
+        <solver></solver>
+    </solverBenchmark>
+</plannerBenchmark>
