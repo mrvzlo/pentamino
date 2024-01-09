@@ -56,8 +56,8 @@ public class Field {
         for (int i = 0; i < figures; i++) {
             Pentaminoes[i] = new Pentamino(i, this);
             Pentaminoes[i].Color = generateRandomColor();
-            Pentaminoes[i].Variation = Variations.get(0);
-            Pentaminoes[i].Cell = Available.get((i * 3) % Available.size());
+            Pentaminoes[i].Variation = Variations.get(1);
+            Pentaminoes[i].Cell = Available.get((i * 5) % Available.size());
         }
     }
 

@@ -13,7 +13,7 @@
                 <initializingScoreTrend>ONLY_DOWN/ONLY_DOWN</initializingScoreTrend>
             </scoreDirectorFactory>
             <termination>
-                <unimprovedSecondsSpentLimit>600</unimprovedSecondsSpentLimit>
+                <secondsSpentLimit>200</secondsSpentLimit>
             </termination>
 
             <localSearch>
