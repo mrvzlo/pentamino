@@ -13,8 +13,21 @@
                 <initializingScoreTrend>ONLY_DOWN/ONLY_DOWN</initializingScoreTrend>
             </scoreDirectorFactory>
             <termination>
-                <minutesSpentLimit>1</minutesSpentLimit>
+                <unimprovedSecondsSpentLimit>600</unimprovedSecondsSpentLimit>
             </termination>
+
+            <localSearch>
+                <termination>
+                    <stepCountLimit>10000</stepCountLimit>
+                </termination>
+                <changeMoveSelector>
+                    <selectionOrder>ORIGINAL</selectionOrder>
+                </changeMoveSelector>
+                <acceptor>
+                    <entityTabuSize>5</entityTabuSize>
+                </acceptor>
+                <forager> </forager>
+            </localSearch>
         </solver>
         <problemBenchmarks>
             <solutionFileIOClass>lu.df.pentamino.FieldFileManager</solutionFileIOClass>
@@ -22,24 +35,19 @@
 
             <inputSolutionFile>assets/cross.json</inputSolutionFile>
             <inputSolutionFile>assets/5x5.json</inputSolutionFile>
-            <inputSolutionFile>assets/5x20.json</inputSolutionFile>
             <inputSolutionFile>assets/7x7.json</inputSolutionFile>
-            <inputSolutionFile>assets/25x25.json</inputSolutionFile>
             <inputSolutionFile>assets/big-cross.json</inputSolutionFile>
             <inputSolutionFile>assets/crossword.json</inputSolutionFile>
             <inputSolutionFile>assets/dorime.json</inputSolutionFile>
+            <inputSolutionFile>assets/stairs.json</inputSolutionFile>
+            <inputSolutionFile>assets/5x20.json</inputSolutionFile>
+            <inputSolutionFile>assets/25x25.json</inputSolutionFile>
         </problemBenchmarks>
     </inheritedSolverBenchmark>
-    <solverBenchmark>
-        <name>Tabu Search</name>
-    </solverBenchmark>
     <solverBenchmark>
         <name>Simulated Annealing</name>
     </solverBenchmark>
     <solverBenchmark>
         <name>First Fit</name>
-    </solverBenchmark>
-    <solverBenchmark>
-        <name>First Fit Decreasing</name>
     </solverBenchmark>
 </plannerBenchmark>

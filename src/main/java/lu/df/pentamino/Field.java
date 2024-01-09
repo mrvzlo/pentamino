@@ -56,6 +56,8 @@ public class Field {
         for (int i = 0; i < figures; i++) {
             Pentaminoes[i] = new Pentamino(i, this);
             Pentaminoes[i].Color = generateRandomColor();
+            Pentaminoes[i].Variation = Variations.get(0);
+            Pentaminoes[i].Cell = Available.get((i * 3) % Available.size());
         }
     }
 
@@ -64,6 +66,8 @@ public class Field {
         int height = InitialBoard.length;
 
         for (int i = 0; i < Pentaminoes.length; i++) {
+            if (Pentaminoes[i].Variation == null || Pentaminoes[i].Cell == null)
+                continue;
             boolean[][] form = Pentaminoes[i].Variation.Form;
             int cx = Pentaminoes[i].Cell.X;
             int cy = Pentaminoes[i].Cell.Y;
