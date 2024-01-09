@@ -41,9 +41,9 @@ public class PentaminoManager {
         Variations.add(flipArray(GetY()));
         rotateLast3Times();
         Variations.add((GetZ()));
-        rotateLast3Times();
+        Variations.add(rotateArray(rotateArray(GetZ())));
         Variations.add(flipArray(GetZ()));
-        rotateLast3Times();
+        Variations.add(rotateArray(rotateArray(flipArray(GetZ()))));
     }
 
     private boolean[][] GetI() {
